@@ -1,0 +1,181 @@
+<!-- Programmer: Laith Sarhan, Patrick Moriarty, Sneha Tuteja
+	Assignment:  CS424 Project 2
+	Date:        11/01/2016
+	Description: This is the main html file for a D3 impleneted cartogram.
+-->
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+html {
+  font-size: 15px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+  font-size: 30px;
+  margin: 5px;
+  color: black;
+  font-weight: bold;
+  }
+
+h2 {
+  font-size: 20px;
+  margin: 0;
+  padding: 0 20px;
+  color: black;
+  text-align: center;
+}
+
+h3 {
+  font-size: 13px;
+  margin: 0;
+  padding: 0 3px;
+  color: #615E5E;
+  text-align: left;
+}
+
+section { border:1px solid #7C7878; padding:2px; overflow:hidden; }
+    section > section { float:left; }
+    .sectionHolder { padding-left:2px; }
+
+.background {
+  fill: none;
+  pointer-events: all;
+}
+
+
+.explain_1 {
+        max-width: 240px;
+        max-height: 780px;
+        word-wrap: break-word;
+        overflow-y: scroll;
+}
+
+.explain_2 {
+	      max-width: 475px;
+        word-wrap: break-word;
+}
+
+.explain_3 {
+	      max-width: 575px;
+        word-wrap: break-word;
+}
+
+
+.line {
+  fill: none;
+  stroke: black;
+  stroke-width: 3px;
+}
+
+.lineBold {
+  fill: none;
+  stroke: black;
+  stroke-width: 7px;
+}
+
+
+.lineDashedBold {
+  fill: none;
+  stroke: black;
+  stroke-dasharray: 10, 5;
+  stroke-width: 7px;
+}
+
+.feature {
+  fill: #ccc;
+  cursor: pointer;
+}
+
+.feature.active {
+  fill: red;
+}
+
+.mesh {
+  fill: none;
+  stroke: #fff;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.button{
+  background: #A47D7D;
+  border-radius: 10px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 17px;
+  padding: 5px 20px 5px 20px;
+  text-decoration: none;
+  width: 32%;
+  margin-top: 8px;
+  cursor: pointer;
+}
+
+</style>
+
+<html>
+<head>
+    <title>CS 424 Project 2</title>
+    <script src="https://d3js.org/d3-queue.v4.min.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="lib/topojson.js"></script>
+</head>
+<body>
+  <h1>CS 424 Project 2: US Incarceration Rates</h1>
+<section class="sectionHolder">
+    <!-- Section 1 -->
+    <section>
+      <div id="select">
+        <select id="yearList" class="button">
+        </select>
+      </div>
+
+      <div id="section1" style="position:relative;top:5px;background:#fff;border-width:5px;border-style: solid;border-color: #A47D7D;">
+        <div id="explain">
+          <h2 id="explain1">Incarceration Rate for 2014</h2>
+        </div>
+
+          <!-- SVG canavs will be placed here (using the D3 code in mapcode.js) -->
+          <h3 id="directions1" class="explain_2"></h3>
+      </div>
+      <div id="section3" style="position:relative;top:5px;background:#fff">
+          <button id="button20" class="button" type="button">Combine State Totals</button>
+          <!-- <button id="button0" class="button" type="button">Bar Chart</button>-->
+          <button id="button1" class="button" type="button">Import Federal Prison Data</button>
+          <h2 id="explain3">Incarceration Rate for United States</h2>
+          <h3 id="directions3" class="explain_2"></h3>
+      </div>
+    </section>
+
+    <section >
+    <button id="button101" class="button" type="button">Black and White</button>
+    <button id="button102" class="button" type="button">Multi-line Chart</button>
+    <div id="section2" style="position:relative;top:5px;background:#cccccc;background-image: linear-gradient(to bottom, #999999, #cccccc);border-width:5px;border-style: solid;border-color: #A47D7D;">
+        <h2 id="explain2"></h2>
+        <h3 id="directions2" class="explain_3"></h3>
+    </div>
+  </section>
+
+  <section>
+    <div id="section4" style="position:relative;top:5px;background:#fff">
+        <button id="buttonClose" type="button">-</button>
+        <h3 id="directions4"></h3>
+        <h2 id="explain4"></h2>
+        <ul id="explain5" class="explain_1"></ul>
+    </div>
+  </section>
+
+</section>  <!-- End sectionHolder -->
+
+
+
+<script type="text/javascript" src="./script.js"></script>
+
+
+    <!-- <script src = "script.js"></script> -->
+    <footer>
+         <p>By: Laith Sarhan, Patrick Moriarty and Sneha Tuteja.</p>
+    </footer>
+</body>
+</html>
